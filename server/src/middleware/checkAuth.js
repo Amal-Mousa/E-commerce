@@ -8,7 +8,7 @@ const checkAuth = (req, res, next) => {
   } else {
     verifyToken(token)
       .then((decoded) => {
-        req.user = decoded;
+        req.userInfo = decoded;
         next();
       }).catch(() => {
         res.clearCookie('token').json({

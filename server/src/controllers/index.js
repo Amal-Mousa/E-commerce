@@ -1,7 +1,3 @@
-const experimentalController = (req, res) => {
-  res.json({
-    message: 'Hi there, All right! Good Job',
-  });
-};
+const { signupController } = require('./auth');
 
-module.exports = { experimentalController };
+module.exports = { signupController };
