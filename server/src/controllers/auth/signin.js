@@ -10,8 +10,8 @@ const signInController = (req, res, next) => {
     .then(({ email: userEmail }) => getUserByEmailQuery(userEmail))
     .then(({ rowCount, rows }) => {
       if (rowCount === 0) throw new CustomError(400, 'Invalid Email or Password');
+      // eslint-disable-next-line prefer-destructuring
       req.userInfo = rows[0];
-
       return bcrypt.compare(password, rows[0].password);
     })
     .then((isMatched) => {
@@ -22,7 +22,7 @@ const signInController = (req, res, next) => {
       return signToken({ username, userEmail, userPassword });
     })
     .then((token) => {
-      res.cookie(token, 'token').json({
+      res.cookie('token', token).json({
         data: {
           message: 'User Logged in Successfully',
           info: req.userInfo,

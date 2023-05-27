@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const { router } = require('./routes');
 const { errorHandler } = require('./middleware');
 
@@ -10,6 +11,7 @@ app.set('port', process.env.PORT || 5000);
 app.use([
   express.json(),
   express.urlencoded({ extended: false }),
+  cookieParser(),
   errorHandler,
 ]);
 
