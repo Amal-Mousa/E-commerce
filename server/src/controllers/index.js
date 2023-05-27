@@ -1,3 +1,3 @@
-const { signupController } = require('./auth');
+const { signupController, signInController } = require('./auth');
 
-module.exports = { signupController };
+module.exports = { signupController, signInController };
